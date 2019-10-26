@@ -35,6 +35,9 @@ dependencies {
     compile("io.ktor:ktor-client-core:$ktor_version")
     compile("io.ktor:ktor-client-core-jvm:$ktor_version")
     compile("io.ktor:ktor-client-apache:$ktor_version")
+
+    compile("com.pi4j:pi4j-core:1.2")
+
     testCompile("io.ktor:ktor-server-tests:$ktor_version")
 }
 
