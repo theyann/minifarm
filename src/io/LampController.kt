@@ -5,8 +5,11 @@ import com.pi4j.io.gpio.PinState
 import com.pi4j.io.gpio.RaspiPin
 
 class LampController {
-    private val gpio = GpioFactory.getInstance()
-    private val led = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_14, "LED", PinState.HIGH)
+
+    companion object {
+        private val gpio = GpioFactory.getInstance()
+        private val led = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_14, "LED", PinState.HIGH)
+    }
 
     fun lightenLed() {
         led.setShutdownOptions(true, PinState.LOW);
