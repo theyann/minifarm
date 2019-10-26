@@ -2,6 +2,7 @@ package com.movify.hackathon.squirrels
 
 import com.movify.hackathon.squirrels.io.Relay
 import com.movify.hackathon.squirrels.io.SwitchController
+import com.movify.hackathon.squirrels.io.LampController
 import io.ktor.application.Application
 import io.ktor.application.ApplicationCall
 import io.ktor.application.call
@@ -28,6 +29,18 @@ fun Application.module(testing: Boolean = false) {
     routing {
         get("/") {
             call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
+        }
+
+        get("/led") {
+            val ledController = LampController()
+            ledController.lightenLed()
+            call.respondHtml {
+                body {
+                    h1 {
+                        +"Led is up"
+                    }
+                }
+            }
         }
 
         get("/switch") {
